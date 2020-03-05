@@ -12,4 +12,13 @@ $ curl -X GET http://localhost:3000
 
 # POST
 $ curl -X POST http://localhost:3000 -d {}
+
+```
+
+```
+$ curl -X POST http://localhost:3000/login -d {}
+```
+
+```
+$ curl -H "Authorization: JWT *********************" -X POST http://localhost:3000/posts -d {}
 ```
