@@ -15,10 +15,11 @@ $ curl -X POST http://localhost:3000 -d {}
 
 ```
 
+### JWT 
 ```
 $ curl -X POST http://localhost:3000/login -d {}
 ```
-
+{"token": "****************************"}が返ってくるのでそれを用いて以下のコマンド
 ```
 $ curl -H "Authorization: JWT *********************" -X POST http://localhost:3000/posts -d {}
 ```
