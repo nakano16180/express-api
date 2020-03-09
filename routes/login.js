@@ -16,7 +16,9 @@ router.post('/', function(req, res, next) {
     id: 1,
     username: 'テストユーザー'
   }
- 
+
+  // dbの処理を書く
+
   jwt.sign({user: user}, 'secretkey', {expiresIn: '1h'}, (err, token) => {
     res.json({
       token
@@ -24,23 +26,5 @@ router.post('/', function(req, res, next) {
   })
 });
 
-
-function verifyToken(req, res, next) {
-  // リクエストヘッダーから認証値を取得
-  console.log(req.headers);
-  const bearerHeader = req.headers["authorization"];
-  console.log(bearerHeader);
-  if (typeof bearerHeader !== "undefined") {
-    // Bearerの後ろのスペース以降がトークンになる為splitして取得
-    const bearer = bearerHeader.split(" ");
-    // トークンを保持して次の処理に進む
-    const bearerToken = bearer[1];
-    req.token = bearerToken;
-    next();
-  } else {
-    // トークンが存在しない場合にはエラー
-    res.sendStatus(403);
-  }
-}
 
 module.exports = router;
